@@ -10,6 +10,40 @@ const PostContainer = styled.div(() => ({
   overflow: 'hidden',
 }));
 
+const UserInfo = styled.div({
+  margin: '10px',
+  display: 'flex',
+  alignItems: 'start',
+  justifyContent: 'start',
+});
+
+const UserAvatar = styled.div({
+  backgroundColor: '#888',
+  borderRadius: '50%',
+  color: '#fff',
+  width: '40px',
+  height: '40px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: '18px',
+  marginRight: '10px',
+});
+
+const UserDetails = styled.div({
+  textAlign: 'left',
+});
+
+const UserName = styled.div({
+  fontWeight: 'bold',
+});
+
+const UserEmail = styled.div({
+  fontSize: '14px',
+  color: '#555',
+});
+
+
 const CarouselContainer = styled.div(() => ({
   position: 'relative',
 }));
@@ -33,26 +67,33 @@ const CarouselItem = styled.div(() => ({
 const Image = styled.img(() => ({
   width: '280px',
   height: 'auto',
-  maxHeight: '300px',
+  maxHeight: '250px',
   padding: '10px',
 }));
 
 const Content = styled.div(() => ({
   padding: '10px',
+  textTransform:'capitalize',
+  fontSize: 14,
   '& > h2': {
     marginBottom: '16px',
+    textTransform:'capitalize',
+    fontSize: 18,
+  
   },
 }));
 
 const Button = styled.button(() => ({
   position: 'absolute',
-  bottom: 0,
-  backgroundColor: 'rgba(255, 255, 255, 0.5)',
+  bottom: 120,
+  backgroundColor: '#ecf0f1',
   border: 'none',
-  color: '#000',
-  fontSize: '20px',
+  color: '#2c3e50',
+  fontSize: '18px',
   cursor: 'pointer',
-  height: '50px',
+  height: '40px',
+  width: '40px',
+  borderRadius: "50%"
 }));
 
 const PrevButton = styled(Button)`
@@ -69,7 +110,7 @@ const Post = ({ post }) => {
   const handleNextClick = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
-        left: 50,
+        left: 300,
         behavior: 'smooth',
       });
     }
@@ -78,7 +119,7 @@ const Post = ({ post }) => {
   const handlePrevClick = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
-        left: -70,
+        left: -300,
         behavior: 'smooth',
       });
     }
@@ -87,6 +128,13 @@ const Post = ({ post }) => {
   return (
     <PostContainer>
       <CarouselContainer>
+      <UserInfo>
+        <UserAvatar>{post.user.initials}</UserAvatar>
+        <UserDetails>
+          <UserName>{post.user.name}</UserName>
+          <UserEmail>{post.user.email}</UserEmail>
+        </UserDetails>
+      </UserInfo>
         <Carousel ref={carouselRef}>
           {post.images.map((image, index) => (
             <CarouselItem key={index}>

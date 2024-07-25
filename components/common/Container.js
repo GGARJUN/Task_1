@@ -12,7 +12,7 @@ export default function Container({ children }) {
         alignItems: 'center',
       }}
     >
-      <div style={{ width: isSmallerDevice ? '95%' : '85%' }}>{children}</div>
+      <div style={{ width: isSmallerDevice ? '95%' : '90%' }}>{children}</div>
     </div>
   );
 }

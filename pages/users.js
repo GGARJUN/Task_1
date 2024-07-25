@@ -11,7 +11,7 @@ export default function HomePage() {
       <TopNavbar />
       <div
         style={{
-          margin: '60px 0px 20px',
+          margin: '40px 0px 20px',
         }}
       >
         <UserList />
